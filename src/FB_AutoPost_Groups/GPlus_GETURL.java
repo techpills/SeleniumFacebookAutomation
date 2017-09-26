@@ -19,14 +19,14 @@ public static void main(String[] args) throws InterruptedException {
 	  // Create a new instance of the Firefox driver  
   
   
- 	 System.setProperty("webdriver.gecko.driver", "C://Selenium_Training//geckodriver.exe");
- 	 //WebDriver driver=new FirefoxDriver();
- 	 
- 	 ProfilesIni profile = new ProfilesIni();
+	 System.setProperty("webdriver.gecko.driver", "C://Selenium//geckodriver.exe");
+	 //WebDriver driver=new FirefoxDriver();
+	 
+	 ProfilesIni profile = new ProfilesIni();
 
- 		FirefoxProfile myprofile = profile.getProfile("Buffer");
+		FirefoxProfile myprofile = profile.getProfile("Buffer");
 
- 		driver = new FirefoxDriver(myprofile);
+		driver = new FirefoxDriver(myprofile);
 
       //Implicit wait, this method is used to wait for the webelement to load  
       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  
@@ -34,7 +34,8 @@ public static void main(String[] args) throws InterruptedException {
       //Launch youtube channel web Page 
       //driver.get("https://www.youtube.com/techpills");
       
-      driver.get("https://plus.google.com/communities/member");   
+      //driver.get("https://plus.google.com/communities/member");
+      driver.get("https://www.youtube.com/playlist?list=PLLKmTFb-30OmMHXQ907zibUXrVTtJ_CJR");
 	   Thread.sleep(5000);
    
       //get the tagname for hyperlink and store it in variable list using findElements method

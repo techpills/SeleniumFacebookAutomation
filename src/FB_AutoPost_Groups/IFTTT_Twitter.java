@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.support.ui.Select;
 
-public class IFTTT {
+public class IFTTT_Twitter {
 	
 	private static WebDriver driver = null;
 	
@@ -36,28 +36,25 @@ public class IFTTT {
 	Thread.sleep(5000); 
 	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li/a/div/img")).click();
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]/span[1]")).click();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[1]")).click();
 	Thread.sleep(5000);
 	Select hourOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select")));
-	hourOptions.selectByVisibleText("00");
+	hourOptions.selectByVisibleText("11 AM");
 	Thread.sleep(5000);
-	//Select minuteOptions = new Select(driver.findElement(By.className("minute-options")));
-	//hourOptions.selectByVisibleText("30 minutes");*/
+	Select minuteOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[2]")));
+	minuteOptions.selectByVisibleText("15 minutes");
 	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/input")).click();
 	Thread.sleep(5000);
 	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div/a/span")).click();
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("facebook");
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("Twitter");
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[1]/a/div/img")).click();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li/a/div")).click();
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]/span[1]")).click();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[1]/span[2]")).click();
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("Step by Step Selenium Tutorial with JAVA - How to select the values from dropdown list using select ");
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("\n");
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("https://www.youtube.com/watch?v=nZzVgM-VSjs&list=PLLKmTFb-30OntTdDNxsgJfLB32IZ6w3qu");
-	Thread.sleep(5000);
-	driver.findElement(By.className("tube")).click();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div[1]/textarea")).clear();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div[1]/textarea")).sendKeys("https://www.youtube.com/watch?v=f2RAPSuWur8&list=PLLKmTFb-30OntTdDNxsgJfLB32IZ6w3qu");
 	Thread.sleep(5000);
 	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/input")).click();
 	Thread.sleep(5000);
@@ -108,7 +105,8 @@ public class IFTTT {
 	Thread.sleep(2000);
 	driver.findElement(By.id("validate_action_btn")).click();
 	Thread.sleep(2000);
-	driver.findElement(By.id("statement_create_task_submit")).click();
 	*/
+	driver.findElement(By.id("statement_create_task_submit")).click();
+	
 }
 }

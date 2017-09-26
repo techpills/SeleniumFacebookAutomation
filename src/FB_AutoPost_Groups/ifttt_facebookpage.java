@@ -1,19 +1,33 @@
 package FB_AutoPost_Groups;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.support.ui.Select;
 
-public class IFTTT {
-	
+public class ifttt_facebookpage {
+	private static XSSFCell cell;
+	private static XSSFRow row;
 	private static WebDriver driver = null;
+ private static String path = "C://Selenium//sheets//exceltricksplaylist.xlsx";	
 	
-	public static void main(String args[]) throws InterruptedException
+
+	
+
+	
+	public static void main(String args[]) throws InterruptedException, IOException
 	{
 		 System.setProperty("webdriver.gecko.driver", "C://Selenium//geckodriver.exe");
 		 //WebDriver driver=new FirefoxDriver();
@@ -24,10 +38,22 @@ public class IFTTT {
 
 			driver = new FirefoxDriver(myprofile);
 		 
-		driver.get("https://ifttt.com/create");
+		
+		 FileInputStream file = new FileInputStream(new File(path)); 
+		 XSSFWorkbook workbook = new XSSFWorkbook(file); 
+		 XSSFSheet sheet = workbook.getSheetAt(0); 
+		  
+		   //for (int i =101; i <= sh	eet.ge	tLastRowNum(); i++)
+			   for (int i=12; i <=13;)
+		    	 {
+				   driver.get("https://ifttt.com/create");
+				   String keyword = sheet.getRow(i).getCell(0).getStringCellValue( );
+				     driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+				     System.out.println(keyword);
 
+		Thread.sleep(25000);
 
-	Thread.sleep(5000);
+	
 	driver.findElement(By.className("this-that")).click();
 	Thread.sleep(5000);
 	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).click();
@@ -36,28 +62,29 @@ public class IFTTT {
 	Thread.sleep(5000); 
 	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li/a/div/img")).click();
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]/span[1]")).click();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]")).click();
 	Thread.sleep(5000);
-	Select hourOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select")));
-	hourOptions.selectByVisibleText("00");
-	Thread.sleep(5000);
-	//Select minuteOptions = new Select(driver.findElement(By.className("minute-options")));
-	//hourOptions.selectByVisibleText("30 minutes");*/
+	//Select hourOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select")));
+//	hourOptions.selectByVisibleText("11 AM");
+	//Thread.sleep(5000);
+	Select minuteOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select")));
+	minuteOptions.selectByVisibleText("00");
 	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/input")).click();
 	Thread.sleep(5000);
 	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div/a/span")).click();
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("facebook");
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("Facebook");
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[1]/a/div/img")).click();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]/a/div/img")).click();
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]/span[1]")).click();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[1]/span[2]")).click();
 	Thread.sleep(5000);
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("Step by Step Selenium Tutorial with JAVA - How to select the values from dropdown list using select ");
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("\n");
-	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("https://www.youtube.com/watch?v=nZzVgM-VSjs&list=PLLKmTFb-30OntTdDNxsgJfLB32IZ6w3qu");
-	Thread.sleep(5000);
-	driver.findElement(By.className("tube")).click();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div[1]/textarea")).clear();
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div[1]/textarea")).sendKeys(keyword);
+	System.out.println();
+	keyword = sheet.getRow(i+1).getCell(0).getStringCellValue( );
+	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div[1]/textarea")).sendKeys(keyword);
+	System.out.println(keyword);
 	Thread.sleep(5000);
 	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/input")).click();
 	Thread.sleep(5000);
@@ -108,7 +135,14 @@ public class IFTTT {
 	Thread.sleep(2000);
 	driver.findElement(By.id("validate_action_btn")).click();
 	Thread.sleep(2000);
-	driver.findElement(By.id("statement_create_task_submit")).click();
 	*/
+	try {
+	driver.findElement(By.id("statement_create_task_submit")).click();
+	}
+	catch(Exception e)
+	{
+		
+	}
+}	
 }
 }

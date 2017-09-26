@@ -64,7 +64,7 @@ public class fb_group_post {
 	driver = new FirefoxDriver(myprofile);
  
  //WebDriver driver=new ChromeDriver();
-driver.get("https://goo.gl/PyBJdN");
+driver.get("https://www.facebook.com/dialog/share?app_id=87741124305&href=https%3A//www.youtube.com/attribution_link%3Fa%3DG6q6AE7ZXpY%26u%3D%252Fwatch%253Fv%253D_VHeOsOUfSo%2526feature%253Dshare%2526list%253DPLLKmTFb-30OmZED4ijXSl_4-7hFwxMKit&display=popup&redirect_uri=https://www.youtube.com/facebook_redirect");
  
 //alert.dismiss();
  //WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -87,45 +87,47 @@ driver.get("https://goo.gl/PyBJdN");
  XSSFSheet sheet = workbook.getSheetAt(0); 
   
    //for (int i =101; i <= sh	eet.ge	tLastRowNum(); i++)
-	   for (int i=62; i <=80; i++)
+	   for (int i=249; i <=260; i++)
     	 {
 		   String keyword = sheet.getRow(i).getCell(0).getStringCellValue( );
 		     driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
 
+Thread.sleep(25000);
+		   driver.navigate().to("https://www.facebook.com/dialog/share?app_id=87741124305&href=https%3A//www.youtube.com/attribution_link%3Fa%3DVBmdhQdl3o4%26u%3D%252Fwatch%253Fv%253D2ymkDe8o6Eg%2526feature%253Dshare&display=popup&redirect_uri=https://www.youtube.com/facebook_redirect");
+		   driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
 
-		   driver.navigate().to("https://www.facebook.com/v2.4/dialog/share?redirect_uri=https%3A%2F%2Fwww.youtube.com%2Ffacebook_redirect&display=popup&href=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DqN6JzIzL_tI%26feature%3Dshare%26list%3DPLLKmTFb-30Onzcxa-T-mc_pAyOnxywDAJ%26index%3D30&client_id=87741124305&ret=login&ext=1500960027&hash=AeZIVnS5_0Lk48GW");
-
-		   driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-
-		   WebElement selectGroup = (new WebDriverWait(driver, 100))
+		   WebElement selectGroup = (new WebDriverWait(driver, 300))
 				   .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("._p._55pi._5vto._55_p._2agf._4jy0._4jy3._517h._51sy._42ft")));
 		   selectGroup.click();
 		   //driver.findElement(By.cssSelector("._p._55pi._5vto._55_p._2agf._4jy0._4jy3._517h._51sy._42ft")).click();
 		   //driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-		   WebElement selectMenuItem = (new WebDriverWait(driver, 100))
+		   WebElement selectMenuItem = (new WebDriverWait(driver, 300))
 				   .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("._54ni._42ym._2n3i.__MenuItem"))); 
 		   selectMenuItem.click();
 		   //driver.findElement(By.cssSelector("._54ni._42ym._2n3i.__MenuItem")).click();
 		   //driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-		   WebElement selectAudienceGroup = (new WebDriverWait(driver, 100))
+		   WebElement selectAudienceGroup = (new WebDriverWait(driver, 300))
 				   .until(ExpectedConditions.presenceOfElementLocated(By.id("audience_group"))); 
 		   selectAudienceGroup.click();
 		   //driver.findElement(By.id("audience_group")).click();
 		   selectAudienceGroup.sendKeys(keyword);
+
 //driver.findElement(By.id("audience_group")).sendKeys(keyword);
 //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 //driver.findElement(By.id("audience_group")).click();
 //WebElement groupname = driver.findElement(By.id("audience_group")); 
 //driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-		   WebElement clickPost = (new WebDriverWait(driver, 100))
-				   .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("._599p>span"))); 
-		   clickPost.click();		   
+		    WebElement clickPost = (new WebDriverWait(driver, 100))
+				   .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("._599p>span")));
+		     clickPost.click();
+		   driver.findElement(By.name("__CONFIRM__")).click();
+
+		   
 //driver.findElement(By.cssSelector("._599p>span")).click();            
+		  
              
-             driver.findElement(By.name("__CONFIRM__")).click();
              System.out.println("No." +i+ " Posted on Group Name: " +keyword);             
              Thread.sleep(25000);
-
                  
              //driver.findElement(By.cssSelector(".UFILikeLinkIcon.img.sp_CyzWktPCcmJ.sx_5a6285")).click();
              

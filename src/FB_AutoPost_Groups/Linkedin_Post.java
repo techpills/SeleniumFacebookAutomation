@@ -41,27 +41,22 @@ public class Linkedin_Post {
 	private static XSSFCell cell;
 	private static XSSFRow row;
 	private static WebDriver driver = null;
- private static String path = "C://New folder//Linkedin_groupList.xlsx";
+ private static String path = "C://Selenium//sheets//Linkedin_groupList.xlsx";
 
   
- public static void main(String[] args) throws InterruptedException {   
- //Create a new instance of the Chrome driver   
- //System.setProperty("webdriver.chrome.driver", "C://Selenium_Training//chromedriver.exe");
-	// Create a new instance of the Chrome driver   
-		//System.setProperty("webdriver.chrome.driver", "C://Selenium//chromedriver.exe"); 
+ public static void main(String args[]) throws InterruptedException
+	{
+		 System.setProperty("webdriver.gecko.driver", "C://Selenium//geckodriver.exe");
+		 //WebDriver driver=new FirefoxDriver();
+		 
+		 ProfilesIni profile = new ProfilesIni();
 
-	// File pathToBinary = new File("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
-	// FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-	// FirefoxProfile firefoxProfile = new FirefoxProfile();       
-	// WebDriver driver = new FirefoxDriver(ffBinary,firefoxProfile);
-	 System.setProperty("webdriver.gecko.driver", "C://Selenium_Training//geckodriver.exe");
- //WebDriver driver=new FirefoxDriver();
- 
- ProfilesIni profile = new ProfilesIni();
+			FirefoxProfile myprofile = profile.getProfile("Buffer");
 
-	FirefoxProfile myprofile = profile.getProfile("Buffer");
+			driver = new FirefoxDriver(myprofile);
+		 
+		driver.get("http://www.techyvicky.com");
 
-	driver = new FirefoxDriver(myprofile);
  
  //WebDriver driver=new ChromeDriver();
 //driver.get("https://www.youtube.com/watch?v=FnWE1Co8I-I&list=PLLKmTFb-30OmojVUwq4ht5Kkn7JlsddHV");
@@ -80,14 +75,14 @@ public class Linkedin_Post {
  //Thread.sleep(randomInt);	
  //Thread.sleep(1000);
  driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
- 
+ Thread.sleep(10000);
  try { 
  FileInputStream file = new FileInputStream(new File(path)); 
  XSSFWorkbook workbook = new XSSFWorkbook(file); 
  XSSFSheet sheet = workbook.getSheetAt(0); 
   
    //for (int i =101; i <= sh	eet.ge	tLastRowNum(); i++)
-	   for (int i=3; i <=30; i++)
+	   for (int i=25; i <=30; i++)
     	 {
 		   String keyword = sheet.getRow(i).getCell(0).getStringCellValue( );
 		     driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
@@ -95,20 +90,22 @@ public class Linkedin_Post {
 
 		   driver.navigate().to(keyword);
 
-		  driver.findElement(By.id("title-form-66")).click();
+		 // driver.findElement(By.name("title")).click();
 		   
 			WebElement clickTitle = (new WebDriverWait(driver, 100))
-			   .until(ExpectedConditions.presenceOfElementLocated(By.id("title-form-66")));
+			   .until(ExpectedConditions.presenceOfElementLocated(By.name("title")));
 		   clickTitle.click();
-		   clickTitle.sendKeys("Is your Google Profile has been Suspended? How to appeal for a review to Reinstate?");
+		   clickTitle.sendKeys("How to REMOVE any ADWARE or MALWARE from your computer? Free Tools included\r\n");
 		   //driver.findElement(By.id("title")).click();
 		   
 		   Thread.sleep(5000);
 		   
 		   WebElement clickBody = (new WebDriverWait(driver, 100))
-				   .until(ExpectedConditions.presenceOfElementLocated(By.name("body"))); 
+				   .until(ExpectedConditions.presenceOfElementLocated(By.name("body")));
+				   Thread.sleep(10000);
 		   clickBody.click();
-		   clickBody.sendKeys("https://goo.gl/jOAa6v");
+		   Thread.sleep(10000);
+		   clickBody.sendKeys("https://www.youtube.com/watch?v=2ymkDe8o6Eg&list=PLLKmTFb-30Onzcxa-T-mc_pAyOnxywDAJ");
 		   Thread.sleep(10000);
 		   clickBody.clear();
 		   WebElement clickPost = (new WebDriverWait(driver, 100))
