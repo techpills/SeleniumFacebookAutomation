@@ -44,8 +44,8 @@ public  String GetTimeStampValue()throws IOException{
     {
     	captureScreenshotWithTiming cs = new captureScreenshotWithTiming();
     	String url ="http://www.google.com";
-    	cs.captureScreenShot();
-    	cs.GetTimeStampValue();
+    	//cs.captureScreenShot();
+    	//cs.GetTimeStampValue();
     	
     }
 }

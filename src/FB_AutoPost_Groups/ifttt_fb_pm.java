@@ -17,7 +17,7 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.support.ui.Select;
 
-public class ifttt_auto {
+public class ifttt_fb_pm {
 	private static XSSFCell cell;
 	public static String keyword;
 	public static Select minuteOptions;
@@ -25,7 +25,7 @@ public class ifttt_auto {
 	private static XSSFRow row;
 	public static Select hourOptions;
 	private static WebDriver driver = null;
-    private static String path = "C://Selenium//sheets//exceltrickplaylist.xlsx";
+    private static String path = "C://Selenium//sheets//exceltricksplaylist.xlsx";
 	public static void main(String args[]) throws InterruptedException, IOException
 	{
 		 System.setProperty("webdriver.gecko.driver", "C://Selenium//geckodriver.exe");
@@ -42,7 +42,7 @@ public class ifttt_auto {
 				 
 				 FileInputStream file = new FileInputStream(new File(path)); 
 				 XSSFWorkbook workbook = new XSSFWorkbook(file); 
-				 XSSFSheet sheet = workbook.getSheetAt(1);
+				 XSSFSheet sheet = workbook.getSheetAt(4);
 				 
 				 for ( count=1; count <=sheet.getLastRowNum();)
 				 {
@@ -76,11 +76,11 @@ public class ifttt_auto {
 			            driver.findElement(By.xpath(elementConstants.everyDayAt)).click();
 			            Thread.sleep(5000);
 			            hourOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[1]")));
-			            hourOptions.selectByVisibleText("0"+i +" am");
+			            hourOptions.selectByVisibleText("0"+i +" pm");
 			            Thread.sleep(5000);
 			            minuteOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[2]")));
 			        	minuteOptions.selectByVisibleText("00 minutes");
-			            System.out.println(i +" am");
+			            System.out.println(i +" pm");
 			            Thread.sleep(5000);
 			            
 			            
@@ -128,11 +128,11 @@ public class ifttt_auto {
 		            driver.findElement(By.xpath(elementConstants.everyDayAt)).click();
 		            Thread.sleep(5000);
 		            hourOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[1]")));
-		            hourOptions.selectByVisibleText("0"+i +" am");
+		            hourOptions.selectByVisibleText("0"+i +" pm");
 		            Thread.sleep(5000);
 		            minuteOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[2]")));
 		        	minuteOptions.selectByVisibleText("15 minutes");
-		            System.out.println(i +" am");
+		            System.out.println(i +" pm");
 		            Thread.sleep(5000);
 		            
 		            
@@ -175,11 +175,11 @@ public class ifttt_auto {
 		            driver.findElement(By.xpath(elementConstants.everyDayAt)).click();
 		            Thread.sleep(5000);
 		            hourOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[1]")));
-		            hourOptions.selectByVisibleText("0"+i +" am");
+		            hourOptions.selectByVisibleText("0"+i +" pm");
 		            Thread.sleep(5000);
 		            minuteOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[2]")));
 		        	minuteOptions.selectByVisibleText("30 minutes");
-		            System.out.println(i +" am");
+		            System.out.println(i +" pm");
 		            Thread.sleep(5000);
 		            
 		            
@@ -222,11 +222,11 @@ public class ifttt_auto {
 		            driver.findElement(By.xpath(elementConstants.everyDayAt)).click();
 		            Thread.sleep(5000);
 		            hourOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[1]")));
-		            hourOptions.selectByVisibleText("0"+i +" am");
+		            hourOptions.selectByVisibleText("0"+i +" pm");
 		            Thread.sleep(5000);
 		            minuteOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[2]")));
 		        	minuteOptions.selectByVisibleText("45 minutes");
-		            System.out.println(i +" am");
+		            System.out.println(i +" pm");
 		            Thread.sleep(5000);
 		            
 		            

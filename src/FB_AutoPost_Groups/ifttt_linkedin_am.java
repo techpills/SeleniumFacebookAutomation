@@ -17,7 +17,7 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.support.ui.Select;
 
-public class ifttt_auto {
+public class ifttt_linkedin_am {
 	private static XSSFCell cell;
 	public static String keyword;
 	public static Select minuteOptions;
@@ -25,7 +25,7 @@ public class ifttt_auto {
 	private static XSSFRow row;
 	public static Select hourOptions;
 	private static WebDriver driver = null;
-    private static String path = "C://Selenium//sheets//exceltrickplaylist.xlsx";
+    private static String path = "C://Selenium//sheets//exceltricksplaylist.xlsx";
 	public static void main(String args[]) throws InterruptedException, IOException
 	{
 		 System.setProperty("webdriver.gecko.driver", "C://Selenium//geckodriver.exe");
@@ -42,9 +42,9 @@ public class ifttt_auto {
 				 
 				 FileInputStream file = new FileInputStream(new File(path)); 
 				 XSSFWorkbook workbook = new XSSFWorkbook(file); 
-				 XSSFSheet sheet = workbook.getSheetAt(1);
+				 XSSFSheet sheet = workbook.getSheetAt(2);
 				 
-				 for ( count=1; count <=sheet.getLastRowNum();)
+				 for ( count=2; count <=sheet.getLastRowNum();)
 				 {
 				    
 					 keyword = sheet.getRow(count).getCell(0).getStringCellValue();
@@ -52,7 +52,7 @@ public class ifttt_auto {
 			 	     System.out.println(keyword);
 				 
 				 
-		       time : for(int i=7; i<=9; i++)
+		       time : for(int i=1; i<=9; i++)
 			     
 		        {
 		        	minutes : for(int j=0; j<=45; j=j+15)
@@ -88,11 +88,11 @@ public class ifttt_auto {
 			        	Thread.sleep(5000);
 			        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div/a/span")).click();
 			        	Thread.sleep(5000);
-			        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("facebook");
+			        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("linkedin");
 			        	Thread.sleep(5000);
-			        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[1]/a/div/img")).click();
+			        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li/a/div/img")).click();
 			        	Thread.sleep(5000);
-			        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]/span[1]")).click();
+			        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]")).click();
 			        	Thread.sleep(5000);
 			        	//driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("Step by Step Selenium Tutorial with JAVA - How to select the values from dropdown list using select ");
 			        	//driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("\n");
@@ -132,7 +132,7 @@ public class ifttt_auto {
 		            Thread.sleep(5000);
 		            minuteOptions = new Select(driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li/span[2]/div/div/select[2]")));
 		        	minuteOptions.selectByVisibleText("15 minutes");
-		            System.out.println(i +" am");
+		            System.out.println(i +"am");
 		            Thread.sleep(5000);
 		            
 		            
@@ -140,19 +140,22 @@ public class ifttt_auto {
 		        	Thread.sleep(5000);
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div/a/span")).click();
 		        	Thread.sleep(5000);
-		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("facebook");
+		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("linkedin");
 		        	Thread.sleep(5000);
-		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[1]/a/div/img")).click();
+		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li/a/div/img")).click();
 		        	Thread.sleep(5000);
-		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]/span[1]")).click();
+		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]")).click();
 		        	Thread.sleep(5000);
+		        	//driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("Step by Step Selenium Tutorial with JAVA - How to select the values from dropdown list using select ");
+		        	//driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("\n");
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys(keyword);
+		        	
+		        	//driver.findElement(By.className("tube")).click();
 		        	Thread.sleep(5000);
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[2]/span[2]/div/div[1]/textarea")).clear();
 		        	Thread.sleep(5000);
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/input")).click();
 		        	Thread.sleep(5000);
-		        	
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/input")).click();
 		        	
 		        	keyword = sheet.getRow(++count).getCell(0).getStringCellValue();
@@ -187,21 +190,22 @@ public class ifttt_auto {
 		        	Thread.sleep(5000);
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div/a/span")).click();
 		        	Thread.sleep(5000);
-		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("facebook");
+		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("linkedin");
 		        	Thread.sleep(5000);
-		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[1]/a/div/img")).click();
+		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li/a/div/img")).click();
 		        	Thread.sleep(5000);
-		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]/span[1]")).click();
+		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]")).click();
 		        	Thread.sleep(5000);
+		        	//driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("Step by Step Selenium Tutorial with JAVA - How to select the values from dropdown list using select ");
+		        	//driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("\n");
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys(keyword);
+		        	
+		        	//driver.findElement(By.className("tube")).click();
 		        	Thread.sleep(5000);
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[2]/span[2]/div/div[1]/textarea")).clear();
 		        	Thread.sleep(5000);
-		        	Thread.sleep(5000);
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/input")).click();
 		        	Thread.sleep(5000);
-		        	
-
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/input")).click();
 		        	
 		        	keyword = sheet.getRow(++count).getCell(0).getStringCellValue();
@@ -234,23 +238,22 @@ public class ifttt_auto {
 		        	Thread.sleep(5000);
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div/a/span")).click();
 		        	Thread.sleep(5000);
-		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("facebook");
+		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/input")).sendKeys("linkedin");
 		        	Thread.sleep(5000);
-		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[1]/a/div/img")).click();
+		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li/a/div/img")).click();
 		        	Thread.sleep(5000);
-		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]/span[1]")).click();
+		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/ul/li[2]")).click();
 		        	Thread.sleep(5000);
+		        	//driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("Step by Step Selenium Tutorial with JAVA - How to select the values from dropdown list using select ");
+		        	//driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys("\n");
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[1]/span[2]/div/div[1]/textarea")).sendKeys(keyword);
-		        	Thread.sleep(5000);
+		        	
 		        	//driver.findElement(By.className("tube")).click();
+		        	Thread.sleep(5000);
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/ul/li[2]/span[2]/div/div[1]/textarea")).clear();
 		        	Thread.sleep(5000);
-
-		        	
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/div/input")).click();
 		        	Thread.sleep(5000);
-		        	
-		        	
 		        	driver.findElement(By.xpath(".//*[@id='composer']/div/div/span/div[2]/form/input")).click();
 		        	
 		        	keyword = sheet.getRow(++count).getCell(0).getStringCellValue();

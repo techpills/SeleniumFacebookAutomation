@@ -87,7 +87,7 @@ driver.get("https://www.facebook.com/dialog/share?app_id=87741124305&href=https%
  XSSFSheet sheet = workbook.getSheetAt(0); 
   
    //for (int i =101; i <= sh	eet.ge	tLastRowNum(); i++)
-	   for (int i=249; i <=260; i++)
+	   for (int i=254; i <=260; i++)
     	 {
 		   String keyword = sheet.getRow(i).getCell(0).getStringCellValue( );
 		     driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
